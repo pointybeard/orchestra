@@ -1,0 +1,32 @@
+{
+    "name": "pointybeard/orchestra",
+    "description": "Companion extension for Orchestra",
+    "type": "project",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Alannah Kearney",
+            "email": "hi@alannahkearney.com",
+            "homepage": "http://alannahkearney.com",
+            "role": "Developer"
+        }
+    ],
+    "support": {
+        "issues": "https://github.com/pointybeard/orchestra/issues",
+        "wiki": "https://github.com/pointybeard/orchestra/wiki"
+    },
+    "minimum-stability": "stable",
+    "require": {
+        "php": ">=7.3",
+        "pointybeard/helpers": "~1.2.0",
+        "pointybeard/symphony-pdo": "~0.1.0",
+        "ramsey/uuid": "~3.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "pointybeard\\Orchestra\\": "src/",
+            "pointybeard\\Orchestra\\App\\Seeders\\": "../../../.orchestra/seeders/",
+            "pointybeard\\Orchestra\\App\\Migrations\\": "../../../.orchestra/migrations/"
+        }
+    }
+}

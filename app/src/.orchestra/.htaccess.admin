@@ -1,0 +1,47 @@
+
+SetEnv "orchestra.mode" "administration"
+SetEnv "orchestra.define.httpenv" 1
+SetEnv "orchestra.define.manifest" 1
+SetEnv "orchestra.define.workspace" 1
+
+SetEnv "symphony_enable_preboot" 1
+SetEnv "symphony_preboot_config" "../../var/manifest/preboot.json"
+
+Options +SymLinksIfOwnerMatch -Indexes
+
+<IfModule mod_negotiation.c>
+    Options -MultiViews
+</IfModule>
+
+RewriteEngine on
+RewriteBase /
+
+### DO NOT APPLY RULES WHEN REQUESTING "favicon.ico"
+RewriteCond %{REQUEST_FILENAME} favicon.ico [NC]
+RewriteRule .* - [L]
+
+### PROTECT CRUCIAL FILES
+RewriteCond %{REQUEST_URI} (^|/)\. [NC]
+RewriteRule .* - [F]
+
+### STOP IF REQUEST IS FOR A REAL FILE OR DIRECTORY
+RewriteCond %{REQUEST_FILENAME} -d [OR]
+RewriteCond %{REQUEST_FILENAME} -f
+RewriteRule .* - [L]
+
+### ADD TRAILING SLASH (ignores files)
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_URI} !/$ [OR]
+RewriteCond %{REQUEST_URI} !(.*)/$
+RewriteRule ^(.*)$ $1/ [L,R=301]
+
+### URL Correction
+RewriteRule ^index.php(/.*/?) $1 [NC,L,R=301]
+
+## NO PAGE SET e.g. https://admin.example.com/
+RewriteRule ^\/?$ index.php?symphony-page=&mode=administration&%{QUERY_STRING} [L]
+
+## PAGE SET e.g. https://admin.example.com/blueprints/settings/
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteRule ^(.*\/?)$ index.php?symphony-page=$1&mode=administration&%{QUERY_STRING} [L]

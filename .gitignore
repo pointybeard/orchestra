@@ -1,0 +1,7 @@
+.DS_Store
+.php_cs.cache
+app/vendor/
+vendor/
+build/
+*.phar
+test/

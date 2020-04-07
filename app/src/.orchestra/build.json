@@ -1,0 +1,113 @@
+{
+    "libraries": [
+        {
+            "repository": {
+                "url": "https://github.com/pointybeard/symphonycms.git",
+                "target": "symphony",
+                "branch": "2.7.10-extended-essentials"
+            },
+            "cleanup": [
+                "extensions"
+            ]
+        },
+        {
+            "repository": {
+                "url": "https://github.com/pointybeard/symphony-section-builder.git",
+                "target": "section-builder"
+            }
+        }
+    ],
+    "extensions": [
+        {
+            "repository": {
+                "url": "https://github.com/pointybeard/console.git"
+            },
+            "install": false
+        },
+        {
+            "repository": {
+                "url": "https://github.com/pointybeard/classicfields.git"
+            }
+        },
+        {
+            "repository": {
+                "url": "https://github.com/symphonycms/jit_image_manipulation.git",
+                "branch": "1.x"
+            },
+            "install": false
+        }
+    ],
+    "paths": [
+        "bin",
+        "lib/extensions",
+        "var/manifest/cache",
+        "var/manifest/logs",
+        "var/manifest/tmp",
+        "var/workspace/pages",
+        "var/workspace/data-sources",
+        "var/workspace/events",
+        "www/admin/symphony",
+        "www/www"
+    ],
+    "symbolic-links": [
+        {
+            "src": "../../lib/symphony/index.php",
+            "dest": "www/admin"
+        },
+        {
+            "src": "../../../lib/symphony/symphony/assets",
+            "dest": "www/admin/symphony"
+        },
+        {
+            "src": "../../.orchestra/.htaccess.admin",
+            "dest": "www/admin",
+            "name": ".htaccess"
+        },
+        {
+            "src": "../../.orchestra/.htaccess.www",
+            "dest": "www/www",
+            "name": ".htaccess"
+        },
+        {
+            "src": "../../lib/symphony/index.php",
+            "dest": "www/www"
+        },
+        {
+            "src": "../../.orchestra/preboot.json",
+            "dest": "var/manifest"
+        },
+        {
+            "src": "../../.orchestra/preboot",
+            "dest": "var/manifest"
+        },
+        {
+            "src": "../extensions",
+            "dest": "lib/symphony"
+        },
+        {
+            "src": "../../../../../extensions/orchestra/src/SectionBuilder/Models/Fields/Attachment.php",
+            "dest": "lib/section-builder/src/SectionBuilder/Models/Fields"
+        }
+    ],
+    "author": {
+        "username": "admin",
+        "email": "hi@example.com"
+    },
+    "config": {
+        "database": {
+            "user": "root",
+            "password": "root",
+            "db": "orchestra",
+            "host": "localhost",
+            "port": 3306,
+            "tbl_prefix": "tbl_"
+        },
+        "general": {
+            "sitename": "Orchestra"
+        },
+        "region": {
+            "date_format": "d/m/Y",
+            "timezone": "Australia/Brisbane"
+        }
+    }
+}

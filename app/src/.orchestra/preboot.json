@@ -1,0 +1,6 @@
+{
+    "includes": [
+        "../../var/manifest/preboot/01_orchestra.php",
+        "../../var/manifest/preboot/02_autoloaders.php"
+    ]
+}
