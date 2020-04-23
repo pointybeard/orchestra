@@ -1,10 +1,10 @@
 # Orchestra
 
-[[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/pointybeard/orchestra/badges/quality-score.png?b=master)][ext-scrutinizer]
+[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/pointybeard/orchestra/badges/quality-score.png?b=master)][ext-scrutinizer]
 [![Code Coverage](https://scrutinizer-ci.com/g/pointybeard/orchestra/badges/coverage.png?b=master)][ext-scrutinizer]
 [![Build Status](https://scrutinizer-ci.com/g/pointybeard/orchestra/badges/build.png?b=master)][ext-scrutinizer]
 
-[Orchestra] is a meta package for defining, scaffolding, rapidly deploying, and re-deploying [Symphony CMS] builds.
+[Orchestra][ext-Orchestra] is a meta package for defining, scaffolding, rapidly deploying, and re-deploying [Symphony CMS][ext-Symphony CMS] builds.
 
 -   [Installation](#installation)
 -   [Basic Usage](#basic-usage)
@@ -20,13 +20,13 @@
 
 ### Pre-compiled
 
-1. Run the following command(s) to install Orchestra to `/usr/local/sbin`:
-
 ```bash
 $ curl -sSL https://github.com/pointybeard/orchestra/releases/download/1.0.0/orchestra.phar > orchestra.phar
 $ sudo mv orchestra.phar /usr/local/sbin/orchestra
 $ sudo chmod 0755 /usr/local/sbin/orchestra
 ```
+
+This will download the pre-compiled Orchestra binary and move it to `/usr/local/sbin`.
 
 ### From Source
 
