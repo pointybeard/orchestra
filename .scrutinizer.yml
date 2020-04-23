@@ -16,3 +16,4 @@ checks:
 filter:
     excluded_paths:
         - 'tests/'
+        - 'app/'
