@@ -18,7 +18,9 @@ use Orchestra\Orchestra\AbstractAction;
 use Orchestra\Orchestra\Exceptions;
 use pointybeard\Helpers\Cli\Colour\Colour;
 use pointybeard\Helpers\Cli\Input;
+use pointybeard\Helpers\Cli\Message\Message;
 use pointybeard\Helpers\Cli\ProgressBar;
+use pointybeard\Helpers\Cli\Prompt\Prompt;
 use pointybeard\Helpers\Functions\Files;
 use pointybeard\Helpers\Functions\Json;
 use SymphonyPDO;
@@ -192,7 +194,32 @@ class Build extends AbstractAction
             foreach ($config as $group => $values) {
                 foreach ($values as $key => $value) {
                     if (null == $value) {
-                        throw new Exceptions\MissingConfigException("{$group}->{$key}");
+                        // THis will not be null if --assume-yes, --assume-no,
+                        // or --assume-skip are set in which case the user
+                        // is attempting a non-interactive build. Do not display
+                        // a prompt, just throw an exception to trigger the
+                        // build to fail.
+                        if (null != ORCHESTRA_PROMPT_FLAGS) {
+                            throw new Exceptions\MissingConfigException("{$group}->{$key}");
+                        }
+
+                        Orchestra\output("Missing configiration value for {$group}->{$key}", Orchestra\OUTPUT_WARNING);
+                        $config->$group->$key = (new Prompt('Enter value'))
+                            ->validator(function ($input) {
+                                if (strlen(trim($input)) <= 0) {
+                                    (new Message())
+                                        ->message('A value must be provided.')
+                                        ->foreground(Colour::FG_YELLOW)
+                                        ->display()
+                                    ;
+
+                                    return false;
+                                }
+
+                                return true;
+                            })
+                            ->display()
+                        ;
                     }
                 }
             }
@@ -206,7 +233,7 @@ class Build extends AbstractAction
         Orchestra\output('Establishing database connection...', Orchestra\OUTPUT_HEADING);
 
         try {
-            $db = SymphonyPDO\Loader::instance($build->config->database);
+            $db = SymphonyPDO\Loader::instance($config->database);
             if (false == ($db instanceof \SymphonyPDO\Lib\Database)) {
                 throw new \Exception('SymphonyPDO Loader::instance() did not return a valid Database object!');
             } elseif (false == $db->connected()) {
