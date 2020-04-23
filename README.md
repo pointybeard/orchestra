@@ -32,11 +32,11 @@ This will download the pre-compiled Orchestra binary and move it to `/usr/local/
 
 ```bash
 $ git clone --depth 1 https://github.com/pointybeard/orchestra.git
+$ cd orchestra
 $ composer update \
     --no-cache \
     --optimize-autoloader \
-    --no-dev \
-    --working-dir="./orchestra"
+    --no-dev
 $ make && sudo make install
 ```
 
@@ -67,7 +67,7 @@ $ orchestra build
 ### Requirements
 
 -   Orchestra works with PHP 7.3 or above.
--   [Composer], which is used to install dependencies
+-   [Composer][ext-Composer], which is used to install dependencies
 
 ### Dependencies
 
@@ -98,10 +98,11 @@ We encourage you to contribute to this project. Please check out the [Contributi
 -   See also the list of [contributors][ext-contributor] who participated in this project
 
 ## License
-"Orchestra" is released under the MIT License. See [LICENCE][doc-LICENCE] for details.
+"Orchestra" is released under the [MIT License][ext-mit]. See [LICENCE.md][doc-LICENCE] for full copyright and license information.
 
 [doc-CONTRIBUTING]: https://github.com/pointybeard/orchestra/blob/master/CONTRIBUTING.md
-[doc-LICENCE]: http://www.opensource.org/licenses/MIT
+[doc-LICENCE]: https://github.com/pointybeard/orchestra/blob/master/CONTRIBUTING.md
+[ext-MIT]: http://www.opensource.org/licenses/MIT
 [ext-issues]: https://github.com/pointybeard/orchestra/issues
 [ext-Symphony CMS]: http://getsymphony.com
 [ext-Composer]: http://getcomposer.com
