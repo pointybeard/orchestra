@@ -22,7 +22,7 @@ class CommandFailedToRunException extends \Exception
     {
         $this->command = $command;
         $this->error = $error;
-        parent::__construct("Failed to run command. Returned: {$error}", $code, $previous);
+        parent::__construct("Failed to run command {$command}. Returned: {$error}", $code, $previous);
     }
 
     public function getCommand()
