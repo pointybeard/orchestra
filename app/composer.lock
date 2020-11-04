@@ -57,6 +57,10 @@
             ],
             "description": "A meta package containing helpful classes and functions for use in PHP.",
             "homepage": "https://github.com/pointybeard/helpers",
+            "support": {
+                "issues": "https://github.com/pointybeard/helpers/issues",
+                "source": "https://github.com/pointybeard/helpers/tree/1.2.5"
+            },
             "time": "2020-04-17T02:28:17+00:00"
         },
         {
@@ -100,6 +104,11 @@
             ],
             "description": "Provides colour constants and a simple way to colourise strings for use on the command-line.",
             "homepage": "https://github.com/pointybeard/helpers-cli-colour",
+            "support": {
+                "issues": "https://github.com/pointybeard/helpers-cli-colour/issues",
+                "source": "https://github.com/pointybeard/helpers-cli-colour/tree/master",
+                "wiki": "https://github.com/pointybeard/helpers-cli-colour/wiki"
+            },
             "time": "2019-05-05T10:11:59+00:00"
         },
         {
@@ -141,6 +150,11 @@
             ],
             "description": "Collection of classes for handling argv (and other) input when calling command-line scripts. Helps with parsing, collecting and validating arguments, options, and flags.",
             "homepage": "https://github.com/pointybeard/helpers-cli-input",
+            "support": {
+                "issues": "https://github.com/pointybeard/helpers-cli-input/issues",
+                "source": "https://github.com/pointybeard/helpers-cli-input/tree/1.2.2.2",
+                "wiki": "https://github.com/pointybeard/helpers-cli-input/wiki"
+            },
             "time": "2019-11-28T03:33:52+00:00"
         },
         {
@@ -185,6 +199,11 @@
             ],
             "description": "A class to make it easier to print messages to the command-line",
             "homepage": "https://github.com/pointybeard/helpers-cli-message",
+            "support": {
+                "issues": "https://github.com/pointybeard/helpers-cli-message/issues",
+                "source": "https://github.com/pointybeard/helpers-cli-message/tree/1.0.0",
+                "wiki": "https://github.com/pointybeard/helpers-cli-message/wiki"
+            },
             "time": "2019-05-16T06:43:08+00:00"
         },
         {
@@ -229,6 +248,10 @@
             ],
             "description": "Utility for rendering a progress bar to the command line in PHP",
             "homepage": "https://github.com/pointybeard/helpers-cli-progressbar",
+            "support": {
+                "issues": "https://github.com/pointybeard/helpers-cli-progressbar/issues",
+                "source": "https://github.com/pointybeard/helpers-cli-progressbar/tree/master"
+            },
             "time": "2020-04-23T00:16:00+00:00"
         },
         {
@@ -274,6 +297,11 @@
             ],
             "description": "Class for asking for input on the command-line",
             "homepage": "https://github.com/pointybeard/helpers-cli-prompt",
+            "support": {
+                "issues": "https://github.com/pointybeard/helpers-cli-prompt/issues",
+                "source": "https://github.com/pointybeard/helpers-cli-prompt/tree/1.0.0",
+                "wiki": "https://github.com/pointybeard/helpers-cli-prompt/wiki"
+            },
             "time": "2019-05-16T06:59:57+00:00"
         },
         {
@@ -319,6 +347,11 @@
             ],
             "description": "Provides an exception base class that includes method getReadableTrace(), giving simple access to a plain-text, readable, backtrace string.",
             "homepage": "https://github.com/pointybeard/helpers-exceptions-readabletrace",
+            "support": {
+                "issues": "https://github.com/pointybeard/helpers-exceptions-readabletrace/issues",
+                "source": "https://github.com/pointybeard/helpers-exceptions-readabletrace/tree/1.0.2",
+                "wiki": "https://github.com/pointybeard/helpers-exceptions-readabletrace/wiki"
+            },
             "time": "2019-05-26T10:02:32+00:00"
         },
         {
@@ -359,6 +392,11 @@
             ],
             "description": "Provides broadcaster & listener pattern classes",
             "homepage": "https://github.com/pointybeard/helpers-foundation-bnl",
+            "support": {
+                "issues": "https://github.com/pointybeard/helpers-foundation-bnl/issues",
+                "source": "https://github.com/pointybeard/helpers-foundation-bnl/tree/master",
+                "wiki": "https://github.com/pointybeard/helpers-foundation-bnl/wiki"
+            },
             "time": "2020-03-29T05:54:14+00:00"
         },
         {
@@ -402,6 +440,11 @@
             ],
             "description": "Provides foundation factory classes and factory design pattern functionality",
             "homepage": "https://github.com/pointybeard/helpers-foundation-factory",
+            "support": {
+                "issues": "https://github.com/pointybeard/helpers-foundation-factory/issues",
+                "source": "https://github.com/pointybeard/helpers-foundation-factory/tree/1.0.4",
+                "wiki": "https://github.com/pointybeard/helpers-foundation-factory/wiki"
+            },
             "time": "2019-06-05T12:27:19+00:00"
         },
         {
@@ -448,6 +491,11 @@
             ],
             "description": "A collection of helpful functions related to arrays and array manipulation",
             "homepage": "https://github.com/pointybeard/helpers-functions-arrays",
+            "support": {
+                "issues": "https://github.com/pointybeard/helpers-functions-arrays/issues",
+                "source": "https://github.com/pointybeard/helpers-functions-arrays/tree/1.0.1",
+                "wiki": "https://github.com/pointybeard/helpers-functions-arrays/wiki"
+            },
             "time": "2019-05-12T04:20:41+00:00"
         },
         {
@@ -497,20 +545,25 @@
             ],
             "description": "A collection of functions relating to the command-line",
             "homepage": "https://github.com/pointybeard/helpers-functions-cli",
+            "support": {
+                "issues": "https://github.com/pointybeard/helpers-functions-cli/issues",
+                "source": "https://github.com/pointybeard/helpers-functions-cli/tree/1.1.9.1",
+                "wiki": "https://github.com/pointybeard/helpers-functions-cli/wiki"
+            },
             "time": "2020-04-11T08:51:09+00:00"
         },
         {
             "name": "pointybeard/helpers-functions-debug",
-            "version": "1.0.1",
+            "version": "1.0.1.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/pointybeard/helpers-functions-debug.git",
-                "reference": "2e33c0aac2e42947f33cf401956add09cc0d61df"
+                "reference": "3562931ffebcb8a6306b3636dc76048445cb5a53"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/pointybeard/helpers-functions-debug/zipball/2e33c0aac2e42947f33cf401956add09cc0d61df",
-                "reference": "2e33c0aac2e42947f33cf401956add09cc0d61df",
+                "url": "https://api.github.com/repos/pointybeard/helpers-functions-debug/zipball/3562931ffebcb8a6306b3636dc76048445cb5a53",
+                "reference": "3562931ffebcb8a6306b3636dc76048445cb5a53",
                 "shasum": ""
             },
             "require": {
@@ -541,7 +594,12 @@
             ],
             "description": "A collection of helpful functions to assist with debugging",
             "homepage": "https://github.com/pointybeard/helpers-functions-debug",
-            "time": "2019-05-26T10:04:55+00:00"
+            "support": {
+                "issues": "https://github.com/pointybeard/helpers-functions-debug/issues",
+                "source": "https://github.com/pointybeard/helpers-functions-debug/tree/1.0.1.2",
+                "wiki": "https://github.com/pointybeard/helpers-functions-debug/wiki"
+            },
+            "time": "2020-11-03T10:57:00+00:00"
         },
         {
             "name": "pointybeard/helpers-functions-files",
@@ -586,6 +644,10 @@
             ],
             "description": "A collection of helpful functions related to creating and modifying files and directories",
             "homepage": "https://github.com/pointybeard/helpers-functions-files",
+            "support": {
+                "issues": "https://github.com/pointybeard/helpers-functions-files/issues",
+                "source": "https://github.com/pointybeard/helpers-functions-files/tree/1.0.0"
+            },
             "time": "2020-04-07T01:35:52+00:00"
         },
         {
@@ -629,6 +691,11 @@
             ],
             "description": "A collection of functions for handling bitwise flags",
             "homepage": "https://github.com/pointybeard/helpers-functions-flags",
+            "support": {
+                "issues": "https://github.com/pointybeard/helpers-functions-flags/issues",
+                "source": "https://github.com/pointybeard/helpers-functions-flags/tree/1.0.0",
+                "wiki": "https://github.com/pointybeard/helpers-functions-flags/wiki"
+            },
             "time": "2019-05-07T22:31:38+00:00"
         },
         {
@@ -669,6 +736,11 @@
             ],
             "description": "A collection of functions for working with JSON files and strings",
             "homepage": "https://github.com/pointybeard/helpers-functions-json",
+            "support": {
+                "issues": "https://github.com/pointybeard/helpers-functions-json/issues",
+                "source": "https://github.com/pointybeard/helpers-functions-json/tree/1.0.0",
+                "wiki": "https://github.com/pointybeard/helpers-functions-json/wiki"
+            },
             "time": "2019-06-08T11:21:26+00:00"
         },
         {
@@ -708,6 +780,10 @@
             ],
             "description": "A collection of functions for manipulating numbers",
             "homepage": "https://github.com/pointybeard/helpers-functions-numbers",
+            "support": {
+                "issues": "https://github.com/pointybeard/helpers-functions-numbers/issues",
+                "source": "https://github.com/pointybeard/helpers-functions-numbers/tree/1.0.0"
+            },
             "time": "2020-04-09T23:10:40+00:00"
         },
         {
@@ -753,6 +829,11 @@
             ],
             "description": "A collection of helpful functions related to paths, directories, and files names",
             "homepage": "https://github.com/pointybeard/helpers-functions-paths",
+            "support": {
+                "issues": "https://github.com/pointybeard/helpers-functions-paths/issues",
+                "source": "https://github.com/pointybeard/helpers-functions-paths/tree/1.0.0",
+                "wiki": "https://github.com/pointybeard/helpers-functions-paths/wiki"
+            },
             "time": "2019-05-20T00:43:17+00:00"
         },
         {
@@ -792,6 +873,10 @@
             ],
             "description": "A collection of functions for manipulating strings",
             "homepage": "https://github.com/pointybeard/helpers-functions-strings",
+            "support": {
+                "issues": "https://github.com/pointybeard/helpers-functions-strings/issues",
+                "source": "https://github.com/pointybeard/helpers-functions-strings/tree/master"
+            },
             "time": "2020-04-09T10:15:14+00:00"
         },
         {
@@ -832,6 +917,10 @@
             ],
             "description": "A collection of functions used to manipulate time values",
             "homepage": "https://github.com/pointybeard/helpers-functions-time",
+            "support": {
+                "issues": "https://github.com/pointybeard/helpers-functions-time/issues",
+                "source": "https://github.com/pointybeard/helpers-functions-time/tree/1.1.0"
+            },
             "time": "2020-04-17T02:24:29+00:00"
         },
         {
@@ -875,6 +964,11 @@
             ],
             "description": "Ring buffer for calculating average of a changing set; helps to reduce jitter.",
             "homepage": "https://github.com/pointybeard/helpers-statistics-slidingaverage",
+            "support": {
+                "issues": "https://github.com/pointybeard/helpers-statistics-slidingaverage/issues",
+                "source": "https://github.com/pointybeard/helpers-statistics-slidingaverage/tree/1.0.2",
+                "wiki": "https://github.com/pointybeard/helpers-statistics-slidingaverage/wiki"
+            },
             "time": "2019-05-05T10:13:53+00:00"
         },
         {
@@ -920,6 +1014,11 @@
                 "symphony",
                 "wrapper"
             ],
+            "support": {
+                "issues": "https://github.com/pointybeard/symphony-pdo/issues",
+                "source": "https://github.com/pointybeard/symphony-pdo/tree/0.1.7.3",
+                "wiki": "https://github.com/pointybeard/symphony-pdo/wiki"
+            },
             "time": "2019-06-08T06:04:15+00:00"
         }
     ],
@@ -933,5 +1032,5 @@
         "php": ">=7.3"
     },
     "platform-dev": [],
-    "plugin-api-version": "1.1.0"
+    "plugin-api-version": "2.0.0"
 }
