@@ -4,7 +4,7 @@
             "repository": {
                 "url": "https://github.com/pointybeard/symphonycms.git",
                 "target": "symphony",
-                "branch": "2.7.10-extended-essentials"
+                "branch": "essentials"
             },
             "cleanup": [
                 "extensions"
@@ -51,7 +51,7 @@
     ],
     "symbolic-links": [
         {
-            "src": "../../lib/symphony/index.php",
+            "src": "../../.orchestra/index.php",
             "dest": "www/admin"
         },
         {
@@ -69,7 +69,7 @@
             "name": ".htaccess"
         },
         {
-            "src": "../../lib/symphony/index.php",
+            "src": "../../.orchestra/index.php",
             "dest": "www/www"
         },
         {
