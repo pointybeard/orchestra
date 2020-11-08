@@ -271,23 +271,27 @@ class Build extends AbstractAction
         if (true == file_exists(__WORKING_DIR__.'/.orchestra/structure.sql')) {
             Orchestra\output('Importing database structure...', Orchestra\OUTPUT_HEADING);
 
-            $answer = Orchestra\FLAGS_YES;
-
-            if ((false == $databaseWereTablesDropped || false === $argv->find('database-drop-tables')) && true == Orchestra\doesDatabaseTableExist('tbl_authors', $config->database)) {
-                Orchestra\output("Unable to import structure.sql. It looks like there are existing Symphony CMS tables in database '{$config->database->db}'. Hint: Use --database-drop-tables to clear the database.", Orchestra\OUTPUT_WARNING);
-                $answer = Orchestra\ask_to_proceed(ORCHESTRA_PROMPT_FLAGS, 'Do you want to continue anyway %s?');
-            }
-
-            if (Orchestra\FLAGS_YES == $answer) {
-                try {
-                    Orchestra\importSqlFromFile(__WORKING_DIR__.'/.orchestra/structure.sql', $config->database);
-                } catch (Exceptions\CommandFailedToRunException $ex) {
-                    Orchestra\output('Unable to import database structure. Returned: '.$ex->getError(), Orchestra\OUTPUT_ERROR);
-                } catch (\Exception $ex) {
-                    Orchestra\output('Unable to import database structure. Returned: '.$ex->getMessage(), Orchestra\OUTPUT_ERROR);
-                }
+            if (true == $argv->find('database-skip-import-structure')) {
+                Orchestra\output('Skipping! --database-skip-import-structure is set.', Orchestra\OUTPUT_INFO);
             } else {
-                Orchestra\output('skipping', Orchestra\OUTPUT_NOTICE);
+                $answer = Orchestra\FLAGS_YES;
+
+                if ((false == $databaseWereTablesDropped || false === $argv->find('database-drop-tables')) && true == Orchestra\doesDatabaseTableExist('tbl_authors', $config->database)) {
+                    Orchestra\output("Unable to import structure.sql. It looks like there are existing Symphony CMS tables in database '{$config->database->db}'. Hint: Use --database-drop-tables to clear the database.", Orchestra\OUTPUT_WARNING);
+                    $answer = Orchestra\ask_to_proceed(ORCHESTRA_PROMPT_FLAGS, 'Do you want to continue anyway %s?');
+                }
+
+                if (Orchestra\FLAGS_YES == $answer) {
+                    try {
+                        Orchestra\importSqlFromFile(__WORKING_DIR__.'/.orchestra/structure.sql', $config->database);
+                    } catch (Exceptions\CommandFailedToRunException $ex) {
+                        Orchestra\output('Unable to import database structure. Returned: '.$ex->getError(), Orchestra\OUTPUT_ERROR);
+                    } catch (\Exception $ex) {
+                        Orchestra\output('Unable to import database structure. Returned: '.$ex->getMessage(), Orchestra\OUTPUT_ERROR);
+                    }
+                } else {
+                    Orchestra\output('skipping', Orchestra\OUTPUT_NOTICE);
+                }
             }
         }
 
@@ -297,23 +301,27 @@ class Build extends AbstractAction
         if (true == file_exists(__WORKING_DIR__.'/.orchestra/data.sql')) {
             Orchestra\output('Importing database data...', Orchestra\OUTPUT_HEADING);
 
-            $answer = Orchestra\FLAGS_YES;
-
-            if ((false == $databaseWereTablesDropped || false === $argv->find('database-drop-tables')) && true == Orchestra\doesDatabaseTableExist('tbl_authors', $config->database)) {
-                Orchestra\output("Unable to import data.sql. It looks like there are existing Symphony CMS tables in database '{$config->database->db}'. Hint: Use --database-drop-tables to clear the database.", Orchestra\OUTPUT_WARNING);
-                $answer = Orchestra\ask_to_proceed(ORCHESTRA_PROMPT_FLAGS, 'Do you want to continue anyway %s?');
-            }
-
-            if (Orchestra\FLAGS_YES == $answer) {
-                try {
-                    Orchestra\importSqlFromFile(__WORKING_DIR__.'/.orchestra/data.sql', $config->database);
-                } catch (Exceptions\CommandFailedToRunException $ex) {
-                    Orchestra\output('Unable to import database data. Returned: '.$ex->getError(), Orchestra\OUTPUT_ERROR);
-                } catch (\Exception $ex) {
-                    Orchestra\output('Unable to import database data. Returned: '.$ex->getMessage(), Orchestra\OUTPUT_ERROR);
-                }
+            if (true == $argv->find('database-skip-import-data')) {
+                Orchestra\output('Skipping! --database-skip-import-data is set.', Orchestra\OUTPUT_INFO);
             } else {
-                Orchestra\output('skipping', Orchestra\OUTPUT_NOTICE);
+                $answer = Orchestra\FLAGS_YES;
+
+                if ((false == $databaseWereTablesDropped || false === $argv->find('database-drop-tables')) && true == Orchestra\doesDatabaseTableExist('tbl_authors', $config->database)) {
+                    Orchestra\output("Unable to import data.sql. It looks like there are existing Symphony CMS tables in database '{$config->database->db}'. Hint: Use --database-drop-tables to clear the database.", Orchestra\OUTPUT_WARNING);
+                    $answer = Orchestra\ask_to_proceed(ORCHESTRA_PROMPT_FLAGS, 'Do you want to continue anyway %s?');
+                }
+
+                if (Orchestra\FLAGS_YES == $answer) {
+                    try {
+                        Orchestra\importSqlFromFile(__WORKING_DIR__.'/.orchestra/data.sql', $config->database);
+                    } catch (Exceptions\CommandFailedToRunException $ex) {
+                        Orchestra\output('Unable to import database data. Returned: '.$ex->getError(), Orchestra\OUTPUT_ERROR);
+                    } catch (\Exception $ex) {
+                        Orchestra\output('Unable to import database data. Returned: '.$ex->getMessage(), Orchestra\OUTPUT_ERROR);
+                    }
+                } else {
+                    Orchestra\output('skipping', Orchestra\OUTPUT_NOTICE);
+                }
             }
         }
 
