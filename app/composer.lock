@@ -603,16 +603,16 @@
         },
         {
             "name": "pointybeard/helpers-functions-files",
-            "version": "1.0.0",
+            "version": "1.0.0.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/pointybeard/helpers-functions-files.git",
-                "reference": "f737893e2313386956218b20f15e36ff385dc94f"
+                "reference": "80b588832292699b501a868293331b319cf337bc"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/pointybeard/helpers-functions-files/zipball/f737893e2313386956218b20f15e36ff385dc94f",
-                "reference": "f737893e2313386956218b20f15e36ff385dc94f",
+                "url": "https://api.github.com/repos/pointybeard/helpers-functions-files/zipball/80b588832292699b501a868293331b319cf337bc",
+                "reference": "80b588832292699b501a868293331b319cf337bc",
                 "shasum": ""
             },
             "require": {
@@ -646,9 +646,9 @@
             "homepage": "https://github.com/pointybeard/helpers-functions-files",
             "support": {
                 "issues": "https://github.com/pointybeard/helpers-functions-files/issues",
-                "source": "https://github.com/pointybeard/helpers-functions-files/tree/1.0.0"
+                "source": "https://github.com/pointybeard/helpers-functions-files/tree/1.0.0.3"
             },
-            "time": "2020-04-07T01:35:52+00:00"
+            "time": "2020-11-08T02:32:59+00:00"
         },
         {
             "name": "pointybeard/helpers-functions-flags",
