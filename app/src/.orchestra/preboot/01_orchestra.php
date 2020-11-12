@@ -11,6 +11,8 @@ declare(strict_types=1);
  * file that was distributed with this source code.
  */
 
+use Symphony\Symphony;
+
 const ORCHESTRA_VERSION = '1.0.0';
 const ORCHESTRA_VERSION_ID = '10100';
 
@@ -30,13 +32,13 @@ foreach (json_decode($defaults, true) as $name => $value) {
     }
 }
 
-defineFromEnv('ORCHESTRA_HOME', realpath(dirname(__FILE__).'/../../'));
-defineFromEnv('SYMPHONY_DOCROOT', ORCHESTRA_HOME.'/lib/symphony');
+Symphony\define_from_env('ORCHESTRA_HOME', realpath(dirname(__FILE__).'/../../'));
+Symphony\define_from_env('SYMPHONY_DOCROOT', ORCHESTRA_HOME.'/lib/symphony');
 
 // Orchestra supports 3 modes: administration, frontend, and console. There
 // is no default value so developers must define it themselves.
 try {
-    defineFromEnv('orchestra.mode', null, 'ORCHESTRA_MODE');
+    Symphony\define_from_env('orchestra.mode', null, 'ORCHESTRA_MODE');
     // Make sure the Orchestra mode is valid.
     if (false == in_array(ORCHESTRA_MODE, ['administration', 'frontend', 'console'])) {
         throw new \Exception(sprintf('%s is not a valid site mode. Must be administration, frontend, or console', ORCHESTRA_MODE));
