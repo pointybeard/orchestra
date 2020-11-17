@@ -8,16 +8,16 @@
     "packages": [
         {
             "name": "pointybeard/helpers",
-            "version": "1.2.5",
+            "version": "1.2.6",
             "source": {
                 "type": "git",
                 "url": "https://github.com/pointybeard/helpers.git",
-                "reference": "6db26ea45d65cffe960beebae21e6538b8d38a7b"
+                "reference": "33b41adc5c28dc32d1dd17f375ed7de716ebdc0c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/pointybeard/helpers/zipball/6db26ea45d65cffe960beebae21e6538b8d38a7b",
-                "reference": "6db26ea45d65cffe960beebae21e6538b8d38a7b",
+                "url": "https://api.github.com/repos/pointybeard/helpers/zipball/33b41adc5c28dc32d1dd17f375ed7de716ebdc0c",
+                "reference": "33b41adc5c28dc32d1dd17f375ed7de716ebdc0c",
                 "shasum": ""
             },
             "require": {
@@ -37,7 +37,7 @@
                 "pointybeard/helpers-functions-flags": "^1.0",
                 "pointybeard/helpers-functions-json": "^1.0",
                 "pointybeard/helpers-functions-numbers": "^1.0",
-                "pointybeard/helpers-functions-paths": "^1.0",
+                "pointybeard/helpers-functions-paths": "^1.1.0",
                 "pointybeard/helpers-functions-strings": "^1.1.0",
                 "pointybeard/helpers-functions-time": "^1.1",
                 "pointybeard/helpers-statistics-slidingaverage": "^1.0"
@@ -59,9 +59,9 @@
             "homepage": "https://github.com/pointybeard/helpers",
             "support": {
                 "issues": "https://github.com/pointybeard/helpers/issues",
-                "source": "https://github.com/pointybeard/helpers/tree/1.2.5"
+                "source": "https://github.com/pointybeard/helpers/tree/1.2.6"
             },
-            "time": "2020-04-17T02:28:17+00:00"
+            "time": "2020-11-10T12:56:44+00:00"
         },
         {
             "name": "pointybeard/helpers-cli-colour",
@@ -788,23 +788,20 @@
         },
         {
             "name": "pointybeard/helpers-functions-paths",
-            "version": "1.0.0",
+            "version": "1.1.0.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/pointybeard/helpers-functions-paths.git",
-                "reference": "2ba08ba771170dd904ebdbb44be8e3f8efb31859"
+                "reference": "262dc45d3b531ff2f1e529f56e0ab1715a22159c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/pointybeard/helpers-functions-paths/zipball/2ba08ba771170dd904ebdbb44be8e3f8efb31859",
-                "reference": "2ba08ba771170dd904ebdbb44be8e3f8efb31859",
+                "url": "https://api.github.com/repos/pointybeard/helpers-functions-paths/zipball/262dc45d3b531ff2f1e529f56e0ab1715a22159c",
+                "reference": "262dc45d3b531ff2f1e529f56e0ab1715a22159c",
                 "shasum": ""
             },
             "require": {
-                "php": ">=5.6.6"
-            },
-            "require-dev": {
-                "phpunit/phpunit": "^5"
+                "php": ">=7.4"
             },
             "type": "library",
             "autoload": {
@@ -831,10 +828,10 @@
             "homepage": "https://github.com/pointybeard/helpers-functions-paths",
             "support": {
                 "issues": "https://github.com/pointybeard/helpers-functions-paths/issues",
-                "source": "https://github.com/pointybeard/helpers-functions-paths/tree/1.0.0",
+                "source": "https://github.com/pointybeard/helpers-functions-paths/tree/1.1.0.1",
                 "wiki": "https://github.com/pointybeard/helpers-functions-paths/wiki"
             },
-            "time": "2019-05-20T00:43:17+00:00"
+            "time": "2020-11-10T13:13:10+00:00"
         },
         {
             "name": "pointybeard/helpers-functions-strings",
