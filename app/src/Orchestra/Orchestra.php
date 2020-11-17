@@ -297,7 +297,7 @@ if (!function_exists(__NAMESPACE__.'\isComposable')) {
 }
 
 if (!function_exists(__NAMESPACE__.'\composerRunOnDirectory')) {
-    function composerRunOnDirectory(string $path, bool $includeDev = false, ?string $flags = '-v --no-ansi --no-interaction --no-progress --no-scripts --optimize-autoloader --prefer-dist --no-cache'): void
+    function composerRunOnDirectory(string $path, bool $includeDev = false, ?string $flags = '-v --no-ansi --no-interaction --no-progress --optimize-autoloader --prefer-dist --no-cache'): void
     {
         $path = rtrim($path, '/');
 
