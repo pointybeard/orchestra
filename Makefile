@@ -41,7 +41,6 @@ compile: app/composer.json $(wildcard app/composer.lock) | $(OUT_DIR) ## <defaul
     --no-ansi \
     --no-interaction \
     --no-progress \
-    --no-scripts \
     --optimize-autoloader \
     --prefer-dist \
     --no-cache
