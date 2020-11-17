@@ -565,7 +565,7 @@ orchestra extension install %s --token=%s',
         if (true == file_exists(__WORKING_DIR__.'/.orchestra/sections.json')) {
             $command = sprintf(
                 "
-%s/lib/section-builder/bin/import \
+%s/lib/section-builder/bin/section-builder import \
 -j %1\$s/.orchestra/sections.json \
 --symphony=%1\$s/lib/symphony \
 --manifest=%1\$s/var/manifest",
