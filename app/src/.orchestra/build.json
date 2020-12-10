@@ -85,6 +85,11 @@
             "dest": "lib/symphony"
         },
         {
+            "src": "../src/Includes/Commands/Extension.php",
+            "dest": "lib/extensions/orchestra/commands",
+            "name": "extension.php"
+        },
+        {
             "src": "../../../../../extensions/orchestra/src/SectionBuilder/Models/Fields/Attachment.php",
             "dest": "lib/section-builder/src/SectionBuilder/Models/Fields"
         }
