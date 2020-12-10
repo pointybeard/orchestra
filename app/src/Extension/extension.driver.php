@@ -11,11 +11,17 @@ declare(strict_types=1);
  * file that was distributed with this source code.
  */
 
+if (!file_exists(__DIR__.'/vendor/autoload.php')) {
+    throw new Exception(sprintf('Could not find composer autoload file %s. Did you run `composer update` in %s?', __DIR__.'/vendor/autoload.php', __DIR__));
+}
+
 use pointybeard\Orchestra\Orchestra;
+
+use pointybeard\Symphony\Extended;
 
 // Check if the class already exists before declaring it again.
 if (!class_exists('\\Extension_Orchestra')) {
-    class Extension_Orchestra extends Extension
+    class Extension_Orchestra extends Extended\AbstractExtension
     {
         private static $credentials;
 
@@ -30,25 +36,21 @@ if (!class_exists('\\Extension_Orchestra')) {
             return self::$credentials;
         }
 
-        public static function init()
-        {
-        }
-
         public function install()
         {
-            // Symlink the Attachment field for Section Builder
-
-            return true;
-        }
-
-        public function update($previousVersion = false): bool
-        {
-            return $this->install();
-        }
-
-        public function enable(): bool
-        {
-            return $this->install();
+            return \Symphony::Database()
+                ->query(
+                    "CREATE TABLE `tbl_fields_attachment` (
+                      `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+                      `field_id` int(11) unsigned NOT NULL,
+                      `destination` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+                      `validator` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+                      `prepend_datestamp` enum('yes','no') NOT NULL default 'no',
+                      PRIMARY KEY (`id`),
+                      KEY `field_id` (`field_id`)
+                    ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;"
+                )
+            ;
         }
     }
 }

@@ -64,7 +64,7 @@ class Attachment extends AbstractField implements FieldInterface
                 UNIQUE KEY `entry_id` (`entry_id`),
                 KEY `file` (`file`),
                 KEY `mimetype` (`mimetype`)
-            ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;',
+            ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;',
             (int) $this->id->value
         );
     }
