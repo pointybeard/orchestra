@@ -349,17 +349,6 @@ class Build extends AbstractAction
         }
 
         /************\
-        | Install the Orchestra companion extension to /lib/extensions
-        ************/
-        Orchestra\output('Installing Orchestra extension ...', Orchestra\OUTPUT_HEADING);
-        Orchestra\copyInternalPharDirectoryToDestination(__DIR__.'/../../Extension', __WORKING_DIR__.'/lib/extensions', 'orchestra');
-
-        // Run composer on lib/extensions/orchestra
-        if (false == $argv->find('skip-composer') || false == is_dir(__WORKING_DIR__.'/lib/extensions/orchestra/vendor')) {
-            Orchestra\composerRunOnDirectory(__WORKING_DIR__.'/lib/extensions/orchestra');
-        }
-
-        /************\
         | Download required libraries and extensions
         \************/
         $flags = null;
@@ -409,6 +398,31 @@ class Build extends AbstractAction
                 Orchestra\output($ex->getMessage(), Orchestra\OUTPUT_ERROR);
             }
         }
+
+        /************\
+        | Install the Orchestra companion extension to /lib/extensions
+        ************/
+        Orchestra\output('Unpacking Orchestra extension ...', Orchestra\OUTPUT_HEADING);
+        Orchestra\copyInternalPharDirectoryToDestination(__DIR__.'/../../Extension', __WORKING_DIR__.'/lib/extensions', 'orchestra');
+
+        // Run composer on lib/extensions/orchestra
+        if (false == $argv->find('skip-composer') || false == is_dir(__WORKING_DIR__.'/lib/extensions/orchestra/vendor')) {
+
+            Orchestra\output('Installing composer packages ...', Orchestra\OUTPUT_INFO, null);
+
+            try {
+                Orchestra\composerRunOnDirectory(__WORKING_DIR__.'/lib/extensions/orchestra');
+                Orchestra\output('done', Orchestra\OUTPUT_SUCCESS);
+            } catch (\Exception $ex) {
+                Orchestra\output('Failed!', Orchestra\OUTPUT_WARNING);
+                Orchestra\output($ex->getMessage(), Orchestra\OUTPUT_ERROR);
+            }
+
+        }
+
+        // Add orchestra to the list of extensions to ensure it gets
+        // enabled later on
+        $build->extensions[] = (object)["name" => "orchestra", "install" => true];
 
         /************\
         | Create admin user
