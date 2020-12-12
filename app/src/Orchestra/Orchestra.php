@@ -476,7 +476,7 @@ if (!function_exists(__NAMESPACE__.'\installLibrary')) {
 
         $target = __WORKING_DIR__.'/lib/'.ltrim($package->repository->target ?? $package->name, '/');
 
-        if (false == Flags\is_flag_set($flags, FLAGS_SKIP_COMPOSER) && true == isComposable($target)) {
+        if ((false == Flags\is_flag_set($flags, FLAGS_SKIP_COMPOSER) || false == file_exists($target . '/vendor')) && true == isComposable($target)) {
             try {
                 output('Updating composer packages ... ', OUTPUT_NOTICE);
                 composerRunOnDirectory($target);
