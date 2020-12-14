@@ -37,7 +37,10 @@
             "pointybeard\\Orchestra\\": "src/",
             "pointybeard\\Orchestra\\App\\Seeders\\": "../../../.orchestra/seeders/",
             "pointybeard\\Orchestra\\App\\Migrations\\": "../../../.orchestra/migrations/"
-        }
+        },
+        "files": [
+            "extension.driver.php"
+        ]
     },
     "scripts": {
         "post-update-cmd": "mkdir -p commands fields",
