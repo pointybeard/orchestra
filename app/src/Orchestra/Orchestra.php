@@ -350,7 +350,7 @@ if (!function_exists(__NAMESPACE__.'\gitCloneRepository')) {
             }
         }
 
-        // git clone -b <branch> --single-branch <url> --depth <number of commits>
+        // <git> clone <flags> -b <branch> --single-branch <url> <destination>
         runCommand(sprintf(
             '%s clone %s -b %s %s %s',
             which('git'),
