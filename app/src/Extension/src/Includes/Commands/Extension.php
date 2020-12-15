@@ -17,7 +17,7 @@ use pointybeard\Helpers\Cli\Input;
 use pointybeard\Helpers\Cli\Input\AbstractInputType as Type;
 use pointybeard\Symphony\Extensions\Console as Console;
 
-class extension extends Console\AbstractCommand implements Console\Interfaces\AuthenticatedCommandInterface
+class Extension extends Console\AbstractCommand implements Console\Interfaces\AuthenticatedCommandInterface
 {
     use Console\Traits\hasCommandRequiresAuthenticateTrait;
 
