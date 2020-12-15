@@ -13,12 +13,14 @@ declare(strict_types=1);
 
 namespace pointybeard\Symphony\Extensions\Console\Commands\Orchestra;
 
+use pointybeard\Helpers\Cli\Colour\Colour;
 use pointybeard\Helpers\Cli\Input;
+use pointybeard\Helpers\Cli\Message\Message;
 use pointybeard\Helpers\Foundation\Factory;
 use pointybeard\Orchestra\Orchestra\FileByExtensionIterator;
 use pointybeard\Symphony\Extensions\Console as Console;
 
-class seed extends Console\AbstractCommand implements Console\Interfaces\AuthenticatedCommandInterface
+class Seed extends Console\AbstractCommand implements Console\Interfaces\AuthenticatedCommandInterface
 {
     use Console\Traits\hasCommandRequiresAuthenticateTrait;
 
@@ -48,10 +50,37 @@ class seed extends Console\AbstractCommand implements Console\Interfaces\Authent
             '\\pointybeard\\Orchestra\\Orchestra\\AbstractSeeder'
         );
 
-        foreach (FileByExtensionIterator::fetch(ORCHESTRA_HOME.'/.orchestra/seeders', 'php') as $seederPath) {
-            SeederFactory::build(pathinfo($seederPath, PATHINFO_FILENAME))
-                ->run()
+        $seeders = FileByExtensionIterator::fetch(ORCHESTRA_HOME.'/.orchestra/seeders', 'php');
+
+        $count = 0;
+        $total = $seeders->count();
+
+        foreach ($seeders as $seederPath) {
+            ++$count;
+
+            $name = pathinfo($seederPath, PATHINFO_FILENAME);
+
+            (new Message("[{$count}/{$total}] {$name} ... "))
+                ->foreground(Colour::FG_GREEN)
+                ->flags(Message::FLAG_NONE)
+                ->display()
             ;
+
+            try {
+                SeederFactory::build($name)
+                    ->run()
+                ;
+
+                (new Message('ok'))
+                    ->foreground(Colour::FG_GREEN)
+                    ->display()
+                ;
+            } catch (\Exception $ex) {
+                (new Message("failed! returned: {$ex->getMessage()}"))
+                    ->foreground(Colour::FG_RED)
+                    ->display(STDERR)
+                ;
+            }
         }
 
         return true;
