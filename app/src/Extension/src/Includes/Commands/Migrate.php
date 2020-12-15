@@ -20,7 +20,7 @@ use pointybeard\Helpers\Foundation\Factory;
 use pointybeard\Orchestra\Orchestra\FileByExtensionIterator;
 use pointybeard\Symphony\Extensions\Console as Console;
 
-class migrate extends Console\AbstractCommand implements Console\Interfaces\AuthenticatedCommandInterface
+class Migrate extends Console\AbstractCommand implements Console\Interfaces\AuthenticatedCommandInterface
 {
     use Console\Traits\hasCommandRequiresAuthenticateTrait;
 
