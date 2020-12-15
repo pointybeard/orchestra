@@ -407,7 +407,6 @@ class Build extends AbstractAction
 
         // Run composer on lib/extensions/orchestra
         if (false == $argv->find('skip-composer') || false == is_dir(__WORKING_DIR__.'/lib/extensions/orchestra/vendor')) {
-
             Orchestra\output('Installing composer packages ...', Orchestra\OUTPUT_INFO, null);
 
             try {
@@ -417,12 +416,11 @@ class Build extends AbstractAction
                 Orchestra\output('Failed!', Orchestra\OUTPUT_WARNING);
                 Orchestra\output($ex->getMessage(), Orchestra\OUTPUT_ERROR);
             }
-
         }
 
         // Add orchestra to the list of extensions to ensure it gets
         // enabled later on
-        $build->extensions[] = (object)["name" => "orchestra", "install" => true];
+        $build->extensions[] = (object) ['name' => 'orchestra', 'install' => true];
 
         /************\
         | Create admin user

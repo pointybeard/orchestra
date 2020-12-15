@@ -129,11 +129,9 @@ if (!function_exists(__NAMESPACE__.'\__runCommand')) {
 
             if (1 == $return) {
                 // There was some kind of error. Throw an exception.
-                throw new \Exception(
-                    // If STDERR is empty, in effort to give back something 
-                    // meaningful, grab contents of STDOUT instead
-                    true == empty(trim($stderr)) ? $stdout : $stderr
-                );
+                // If STDERR is empty, in effort to give back something
+                // meaningful, grab contents of STDOUT instead
+                throw new \Exception(true == empty(trim($stderr)) ? $stdout : $stderr);
             }
         } else {
             throw new \Exception('proc_open() returned FALSE');
@@ -476,7 +474,7 @@ if (!function_exists(__NAMESPACE__.'\installLibrary')) {
 
         $target = __WORKING_DIR__.'/lib/'.ltrim($package->repository->target ?? $package->name, '/');
 
-        if ((false == Flags\is_flag_set($flags, FLAGS_SKIP_COMPOSER) || false == file_exists($target . '/vendor')) && true == isComposable($target)) {
+        if ((false == Flags\is_flag_set($flags, FLAGS_SKIP_COMPOSER) || false == file_exists($target.'/vendor')) && true == isComposable($target)) {
             try {
                 output('Updating composer packages ... ', OUTPUT_NOTICE);
                 composerRunOnDirectory($target);

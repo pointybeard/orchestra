@@ -11,7 +11,7 @@ declare(strict_types=1);
  * file that was distributed with this source code.
  */
 
-/**
+/*
  * index.php was removed from the essentials branch of pointybeard/symphonycms
  * so we need to add it back in. This file is symlink'd into the /www/*
  * directories
