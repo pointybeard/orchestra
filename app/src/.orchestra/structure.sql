@@ -93,6 +93,16 @@ CREATE TABLE `tbl_fields` (
   KEY `index` (`element_name`,`type`,`parent_section`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
+CREATE TABLE `tbl_fields_attachment` (
+  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+  `field_id` int(11) unsigned NOT NULL,
+  `destination` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `validator` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `prepend_datestamp` enum('yes','no') NOT NULL default 'no',
+  PRIMARY KEY (`id`),
+  KEY `field_id` (`field_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
 CREATE TABLE `tbl_forgotpass` (
   `author_id` int(11) NOT NULL DEFAULT 0,
   `token` varchar(16) NOT NULL,
