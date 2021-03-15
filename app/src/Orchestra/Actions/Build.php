@@ -135,6 +135,42 @@ class Build extends AbstractAction
                     ->description('Tells Orchestra to run migrations scripts. Should not be used with --database-drop-tables. Note: Migrations are run AFTER seeders. Consider using --skip-seeders if you need to run migrations')
                     ->default(false)
             )
+            ->add(
+                Input\InputTypeFactory::build('LongOption')
+                    ->name('config-database-host')
+                    ->flags(Input\AbstractInputType::FLAG_OPTIONAL | Input\AbstractInputType::FLAG_VALUE_REQUIRED)
+                    ->description('Override database host config value in build.json')
+            )
+            ->add(
+                Input\InputTypeFactory::build('LongOption')
+                    ->name('config-database-port')
+                    ->flags(Input\AbstractInputType::FLAG_OPTIONAL | Input\AbstractInputType::FLAG_VALUE_REQUIRED)
+                    ->description('Override database port config value in build.json')
+            )
+            ->add(
+                Input\InputTypeFactory::build('LongOption')
+                    ->name('config-database-user')
+                    ->flags(Input\AbstractInputType::FLAG_OPTIONAL | Input\AbstractInputType::FLAG_VALUE_REQUIRED)
+                    ->description('Override database user config value in build.json')
+            )
+            ->add(
+                Input\InputTypeFactory::build('LongOption')
+                    ->name('config-database-password')
+                    ->flags(Input\AbstractInputType::FLAG_OPTIONAL | Input\AbstractInputType::FLAG_VALUE_REQUIRED)
+                    ->description('Override database password config value in build.json')
+            )
+            ->add(
+                Input\InputTypeFactory::build('LongOption')
+                    ->name('config-database-db')
+                    ->flags(Input\AbstractInputType::FLAG_OPTIONAL | Input\AbstractInputType::FLAG_VALUE_REQUIRED)
+                    ->description('Override database db config value in build.json')
+            )
+            ->add(
+                Input\InputTypeFactory::build('LongOption')
+                    ->name('config-database-tbl_prefix')
+                    ->flags(Input\AbstractInputType::FLAG_OPTIONAL | Input\AbstractInputType::FLAG_VALUE_REQUIRED)
+                    ->description('Override database table prefix config value in build.json')
+            )
         ;
 
         return $collection;
@@ -185,6 +221,29 @@ class Build extends AbstractAction
         /************/
         foreach ($build->config as $group => $values) {
             foreach ($values as $key => $value) {
+                $config->$group->$key = $value;
+            }
+        }
+
+        // Issue #8 - Check to see if any of the --config-X arguments were set (currently support
+        // is only for the database related value) and override them in $config object
+        $runtimeConfigOptionNames = [
+            "database-host",
+            "database-port",
+            "database-user",
+            "database-password",
+            "database-db",
+            "database-tbl_prefix",
+        ];
+
+        $name = null;
+        $value = null;
+        $group = null;
+        $key = null;
+
+        foreach($runtimeConfigOptionNames as $name) {
+            if(false !== ($value = $argv->find("config-{$name}"))) {
+                [$group, $key] = explode("-", $name, 2);
                 $config->$group->$key = $value;
             }
         }
