@@ -181,8 +181,7 @@ class Build extends AbstractAction
         }
 
         /************\
-        | Merge the config from build.json with config.json. Check for null values
-        | and throw an error if any are found
+        | Merge the config from build.json with config.json
         /************/
         foreach ($build->config as $group => $values) {
             foreach ($values as $key => $value) {
@@ -191,10 +190,12 @@ class Build extends AbstractAction
         }
 
         try {
+            // Look for null values, stoping to ask for one (or throw an error if there are no prompt flags set)
             foreach ($config as $group => $values) {
                 foreach ($values as $key => $value) {
-                    if (null == $value) {
-                        // THis will not be null if --assume-yes, --assume-no,
+                    // Issue #6 -- Check needs to be for NULL so a triple equal sign is needed
+                    if (null === $value) {
+                        // This will not be null if --assume-yes, --assume-no,
                         // or --assume-skip are set in which case the user
                         // is attempting a non-interactive build. Do not display
                         // a prompt, just throw an exception to trigger the
