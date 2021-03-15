@@ -228,12 +228,12 @@ class Build extends AbstractAction
         // Issue #8 - Check to see if any of the --config-X arguments were set (currently support
         // is only for the database related value) and override them in $config object
         $runtimeConfigOptionNames = [
-            "database-host",
-            "database-port",
-            "database-user",
-            "database-password",
-            "database-db",
-            "database-tbl_prefix",
+            'database-host',
+            'database-port',
+            'database-user',
+            'database-password',
+            'database-db',
+            'database-tbl_prefix',
         ];
 
         $name = null;
@@ -241,9 +241,9 @@ class Build extends AbstractAction
         $group = null;
         $key = null;
 
-        foreach($runtimeConfigOptionNames as $name) {
-            if(false !== ($value = $argv->find("config-{$name}"))) {
-                [$group, $key] = explode("-", $name, 2);
+        foreach ($runtimeConfigOptionNames as $name) {
+            if (false !== ($value = $argv->find("config-{$name}"))) {
+                [$group, $key] = explode('-', $name, 2);
                 $config->$group->$key = $value;
             }
         }
@@ -328,6 +328,7 @@ class Build extends AbstractAction
         /************\
         | Build database by running database.sql
         \************/
+        $authorTableWasJustCreated = false;
         if (true == file_exists(__WORKING_DIR__.'/.orchestra/structure.sql')) {
             Orchestra\output('Importing database structure...', Orchestra\OUTPUT_HEADING);
 
@@ -344,6 +345,9 @@ class Build extends AbstractAction
                 if (Orchestra\FLAGS_YES == $answer) {
                     try {
                         Orchestra\importSqlFromFile(__WORKING_DIR__.'/.orchestra/structure.sql', $config->database);
+                        // Issue 4 - This flag allows the next block to know if the author table was just created
+                        // and avoid promping the user with an error about needing to drop all tables.
+                        $authorTableWasJustCreated = true;
                     } catch (Exceptions\CommandFailedToRunException $ex) {
                         Orchestra\output('Unable to import database structure. Returned: '.$ex->getError(), Orchestra\OUTPUT_ERROR);
                     } catch (\Exception $ex) {
@@ -366,7 +370,17 @@ class Build extends AbstractAction
             } else {
                 $answer = Orchestra\FLAGS_YES;
 
-                if ((false == $databaseWereTablesDropped || false === $argv->find('database-drop-tables')) && true == Orchestra\doesDatabaseTableExist('tbl_authors', $config->database)) {
+                if (
+                    // Issue 4 - If author table was just created, we don't need to be checking again to see if it exists
+                    false == $authorTableWasJustCreated
+                    &&
+                    (
+                        false == $databaseWereTablesDropped ||
+                        false === $argv->find('database-drop-tables')
+                    )
+                    &&
+                    true == Orchestra\doesDatabaseTableExist('tbl_authors', $config->database)
+                ) {
                     Orchestra\output("Unable to import data.sql. It looks like there are existing Symphony CMS tables in database '{$config->database->db}'. Hint: Use --database-drop-tables to clear the database.", Orchestra\OUTPUT_WARNING);
                     $answer = Orchestra\ask_to_proceed(ORCHESTRA_PROMPT_FLAGS, 'Do you want to continue anyway %s?');
                 }
