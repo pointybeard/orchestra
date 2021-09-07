@@ -14,7 +14,8 @@
     },
     "log": {
         "archive": 1,
-        "maxsize": 102400
+        "maxsize": 102400,
+        "classpath": "\\Log"
     },
     "database": {
         "host": null,
@@ -23,8 +24,14 @@
         "password": null,
         "db": null,
         "tbl_prefix": null,
-        "query_caching": "on",
-        "query_logging": "on"
+        "query_caching": true,
+        "query_logging": true,
+        "character_encoding": "utf8mb4",
+        "character_set": "utf8mb4",
+        "strip_engine": true,
+        "strip_default_collate": true,
+        "strip_default_charset": true,
+        "strip_auto_increment": true
     },
     "public": {
         "display_event_xml_in_source": "no"
@@ -48,8 +55,11 @@
     "cache_driver": {
         "default": "database"
     },
+    "xslt": {
+        "processor": "\\XsltProcess"
+    },
     "admin": {
-        "max_upload_size": 5242880,
+        "max_upload_size": 104857600,
         "upload_blacklist": "/\\\\.(?:php[34567s]?|phtml)$/i"
     },
     "sorting": {}
