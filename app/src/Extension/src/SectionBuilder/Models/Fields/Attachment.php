@@ -5,7 +5,7 @@ declare(strict_types=1);
 /*
  * This file is part of the "Orchestra" repository.
  *
- * Copyright 2019-2020 Alannah Kearney <hi@alannahkearney.com>
+ * Copyright 2019-2021 Alannah Kearney <hi@alannahkearney.com>
  *
  * For the full copyright and license information, please view the LICENCE
  * file that was distributed with this source code.
@@ -18,8 +18,9 @@ use pointybeard\Symphony\SectionBuilder\Interfaces\FieldInterface;
 
 class Attachment extends AbstractField implements FieldInterface
 {
-    const TYPE = 'attachment';
-    const TABLE = 'tbl_fields_attachment';
+    public const TYPE = 'attachment';
+
+    public const TABLE = 'tbl_fields_attachment';
 
     public static function getFieldMappings(): \stdClass
     {

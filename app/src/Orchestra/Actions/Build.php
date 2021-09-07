@@ -5,7 +5,7 @@ declare(strict_types=1);
 /*
  * This file is part of the "Orchestra" repository.
  *
- * Copyright 2019-2020 Alannah Kearney <hi@alannahkearney.com>
+ * Copyright 2019-2021 Alannah Kearney <hi@alannahkearney.com>
  *
  * For the full copyright and license information, please view the LICENCE
  * file that was distributed with this source code.
@@ -588,7 +588,7 @@ class Build extends AbstractAction
                 Orchestra\output('done', Orchestra\OUTPUT_SUCCESS);
             } catch (Files\Exceptions\Symlink\DestinationExistsException $ex) {
                 Orchestra\output('exists', Orchestra\OUTPUT_NOTICE);
-            } catch (Files\Exceptions\Symlink\TargetMissingException | Files\Exceptions\Symlink\CreationFailedException $ex) {
+            } catch (Files\Exceptions\Symlink\TargetMissingException|Files\Exceptions\Symlink\CreationFailedException $ex) {
                 Orchestra\output('Failed!', Orchestra\OUTPUT_WARNING);
                 Orchestra\output($ex->getMessage(), Orchestra\OUTPUT_WARNING);
             }

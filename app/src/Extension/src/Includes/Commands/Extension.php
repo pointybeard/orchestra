@@ -5,7 +5,7 @@ declare(strict_types=1);
 /*
  * This file is part of the "Orchestra" repository.
  *
- * Copyright 2019-2020 Alannah Kearney <hi@alannahkearney.com>
+ * Copyright 2019-2021 Alannah Kearney <hi@alannahkearney.com>
  *
  * For the full copyright and license information, please view the LICENCE
  * file that was distributed with this source code.
@@ -22,9 +22,13 @@ class Extension extends Console\AbstractCommand implements Console\Interfaces\Au
     use Console\Traits\hasCommandRequiresAuthenticateTrait;
 
     public const ACTION_INSTALL = 'install';
+
     public const ACTION_ENABLE = 'enable';
+
     public const ACTION_DISABLE = 'disable';
+
     public const ACTION_UPDATE = 'update';
+
     public const ACTION_UNINSTALL = 'uninstall';
 
     public function __construct()
