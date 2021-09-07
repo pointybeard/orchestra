@@ -11,20 +11,24 @@ declare(strict_types=1);
  * file that was distributed with this source code.
  */
 
+require_once ORCHESTRA_HOME.'/vendor/autoload.php';
 require_once ORCHESTRA_HOME.'/lib/symphony/vendor/autoload.php';
 
-// Include all of the extensions autoloaders
+// Include all of the extensions autoloaders. We need this sooner than
+// the Symphony kernel can provide it.
 foreach ((new \DirectoryIterator(ORCHESTRA_HOME.'/lib/extensions')) as $e) {
+
+    // (guard) Not an extension folder
     if (true == $e->isDot() || false == $e->isDir()) {
         continue;
     }
 
-    // See if there is a composer.json
+    // (guard) No composer.json
     if (false == file_exists($e->getPathname().'/composer.json')) {
         continue;
     }
 
-    // See if the autoload exists
+    // (guard) No autoload.php
     if (false == file_exists($e->getPathname().'/vendor/autoload.php')) {
         continue;
     }
