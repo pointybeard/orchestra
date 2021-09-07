@@ -11,9 +11,6 @@ declare(strict_types=1);
  * file that was distributed with this source code.
  */
 
-require_once FACE.'/interface.exportablefield.php';
-require_once FACE.'/interface.importablefield.php';
-
 require_once EXTENSIONS.'/orchestra/extension.driver.php';
 
 use Ramsey\Uuid\Uuid;
