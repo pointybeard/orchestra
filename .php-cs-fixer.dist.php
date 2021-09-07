@@ -5,28 +5,28 @@ declare(strict_types=1);
 $header = <<<EOF
 This file is part of the "Orchestra" repository.
 
-Copyright 2019-2020 Alannah Kearney <hi@alannahkearney.com>
+Copyright 2019-2021 Alannah Kearney <hi@alannahkearney.com>
 
 For the full copyright and license information, please view the LICENCE
 file that was distributed with this source code.
 EOF;
 
-$finder = PhpCsFixer\Finder::create()
-    ->files()
-    ->name('*.php')
-    ->in(__DIR__)
-    ->in(__DIR__.'/lib')
-    ->in(__DIR__.'/app/src/Orchestra')
-    ->in(__DIR__.'/app/src/Extension')
-    ->in(__DIR__.'/app/src/.orchestra')
-    ->exclude(__DIR__.'/vendor')
-    ->exclude(__DIR__.'/build')
-;
-
-return PhpCsFixer\Config::create()
+return (new PhpCsFixer\Config())
     ->setUsingCache(true)
     ->setRiskyAllowed(true)
-    ->setRules(array(
+    ->setFinder(
+        (new PhpCsFixer\Finder())
+            ->files()
+            ->name('*.php')
+            ->in(__DIR__)
+            ->in(__DIR__.'/lib')
+            ->in(__DIR__.'/app/src/Orchestra')
+            ->in(__DIR__.'/app/src/Extension')
+            ->in(__DIR__.'/app/src/.orchestra')
+            ->exclude(__DIR__.'/vendor')
+            ->exclude(__DIR__.'/build')
+    )
+    ->setRules([
         '@PSR2' => true,
         '@Symfony' => true,
         'is_null' => true,
@@ -34,11 +34,11 @@ return PhpCsFixer\Config::create()
         'cast_spaces' => ['space' => 'single'],
         'header_comment' => ['header' => $header],
         'include' => true,
-        'class_attributes_separation' => ['elements' => ['method']],
+        'class_attributes_separation' => ['elements' => ['const' => 'one', 'method' => 'one', 'property' => 'one']],
         'no_blank_lines_after_class_opening' => true,
         'no_blank_lines_after_phpdoc' => true,
         'no_empty_statement' => true,
-        'no_extra_consecutive_blank_lines' => true,
+        'no_extra_blank_lines' => true,
         'no_leading_import_slash' => true,
         'no_leading_namespace_whitespace' => true,
         'no_trailing_comma_in_singleline_array' => true,
@@ -53,13 +53,12 @@ return PhpCsFixer\Config::create()
         'phpdoc_scalar' => true,
         'phpdoc_trim' => true,
         'phpdoc_types' => true,
-        'psr0' => true,
+        'psr_autoloading' => true,
         'array_syntax' => ['syntax' => 'short'],
         'declare_strict_types' => true,
         'single_blank_line_before_namespace' => true,
         'standardize_not_equals' => true,
         'ternary_operator_spaces' => true,
-        'trailing_comma_in_multiline_array' => true,
-    ))
-    ->setFinder($finder)
+        'trailing_comma_in_multiline' => true,
+    ])
 ;
