@@ -30,8 +30,4 @@ require_once DOCROOT.'/vendor/autoload.php';
 require_once DOCROOT.'/symphony/lib/boot/bundle.php';
 
 // Begin Symphony proper:
-symphony(
-    isset($_GET['mode'])
-        ? $_GET['mode']
-        : null
-);
+symphony($_GET['mode'] ?? null);
